@@ -1,0 +1,14 @@
+dist
+node_modules/
+.eslintcache
+.jest-cache
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.swp
+.yarn-integrity
+.env
+.DS_Store
+package-lock.json
