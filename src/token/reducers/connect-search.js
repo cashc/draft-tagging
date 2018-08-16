@@ -114,7 +114,7 @@ export function connectSearch(state = connectSearchDefaultState, action = {}) {
     case SET_SELECTED_TOKEN_CATEGORY: {
       const { category } = payload;
       const { tokens } = state;
-      const selectedToken = payload.selectedToken;
+      const selectedToken = payload.selectedToken || state.selectedToken;
 
       let missing = true;
       const newToken = { ...selectedToken, category };

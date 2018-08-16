@@ -1,9 +1,11 @@
 import { h } from 'react-hyperscript-helpers';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
-import { setSelectedTokenCategory } from '../action-creators';
+import { setSelectedTokenCategory, closeModal } from '../action-creators';
 import { DELETE_TOKEN_CATEGORY } from '../constants';
 import { getCategoryItemsSorted } from '../util';
+import { getSelectedToken } from '../selectors';
 
 function buildCategoryActions(onClick) {
   const categoryItems = getCategoryItemsSorted();
@@ -31,25 +33,50 @@ function createCategoryItemAction(categoryItem, onClick) {
   };
 }
 
+const ModalContainer = styled.div`
+  position: absolute;
+  box-shadow: ${({ theme }) => theme.shadowHeight3};
+  background-color: ${({ theme }) => theme.backgroundDisabledInput};
+  padding: 10px;
+  border-radius: 6px;
+`;
+
+const Category = styled.div`
+  cursor: pointer;
+  padding: 2px;
+  margin: 1px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.backgroundDisabled};
+  }
+`;
+
 export function ChooseTokenCategory({
-  // clickPosition,
-  // close = () => {},
+  selectedToken = false,
   handleChooseTokenCategory,
 }) {
+  if (!selectedToken) return null;
+
   const actions = buildCategoryActions(handleChooseTokenCategory);
 
-  return h('div', actions.map((a) => h('div', a.categoryTitle)));
+  return h(ModalContainer, actions.map(({ onClick, label }) => h(Category, { onClick }, label)));
 }
 
-function mapDispatchToProps(dispatch, { selectedToken, close }) {
+function mapStateToProps(state) {
+  return {
+    selectedToken: getSelectedToken(state),
+  };
+}
+
+function mapDispatchToProps(dispatch, { selectedToken }) {
   return {
     handleChooseTokenCategory: (category) => {
       dispatch(setSelectedTokenCategory({ selectedToken, category }));
-      close();
+      dispatch(closeModal());
     },
   };
 }
 
-export const ChooseTokenCategoryConn = connect(null, mapDispatchToProps)(
+export const ChooseTokenCategoryConn = connect(mapStateToProps, mapDispatchToProps)(
   ChooseTokenCategory,
 );

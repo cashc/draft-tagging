@@ -1,1 +1,1 @@
-export { getSortedTokens, getTokensForWordsSorted, getConnectSearchTokens } from './tokens';
+export * from './tokens';

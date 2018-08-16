@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import { getTokensForWordsSorted } from '../selectors';
+import { openModal } from '../action-creators';
 
 const SearchTokenChipContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  padding: 5px 0 18px 31px;
+  padding: 5px 0;
   background-color: ${(props) => props.theme.backgroundPrimary};
 `;
 
@@ -109,9 +110,9 @@ const mapStateToProps = (state) => ({
   tokensForWords: getTokensForWordsSorted(state),
 });
 
-export const mapDispatchToProps = () => ({
+export const mapDispatchToProps = (dispatch) => ({
   chooseTokenCategory: (event, selectedToken) => {
-    console.log('HIT', selectedToken);
+    dispatch(openModal({ selectedToken }));
   },
 });
 

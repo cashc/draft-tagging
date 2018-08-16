@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import { InjectSVG } from '../../ui';
 import { NEW_TOKEN_CATEGORY } from '../constants';
+import { openModal, setSelectedToken } from '../action-creators';
 
 const SearchBarToken = styled.span`
   border-radius: 2px;
@@ -117,10 +118,11 @@ const stopEvent = (ev) => {
   ev.stopPropagation();
 };
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
   chooseTokenCategory: (ev, selectedToken) => {
     stopEvent(ev);
-    console.log('HIT', selectedToken);
+    dispatch(setSelectedToken({ selectedToken }));
+    dispatch(openModal({ selectedToken }));
   },
 });
 

@@ -10,6 +10,8 @@ import {
   SET_SELECTED_TOKEN_CATEGORY,
   RESET_CONNECT_SEARCH,
   FETCH_SEARCH_CONNECT,
+  OPEN_MODAL,
+  CLOSE_MODAL,
 } from './action-types';
 
 export const fetchTokens = (payload) => ({
@@ -72,4 +74,13 @@ export const setSelectedTokenCategory = ({ selectedToken, category }) => ({
 
 export const resetConnectSearch = () => ({
   type: RESET_CONNECT_SEARCH,
+});
+
+export const openModal = ({ selectedToken }) => ({
+  type: OPEN_MODAL,
+  payload: { selectedToken },
+});
+
+export const closeModal = () => ({
+  type: CLOSE_MODAL,
 });

@@ -2,10 +2,10 @@ install: clean svg
 	NODE_ENV="development" yarn --ignore-engines
 	make build-vendor NODE_ENV=development
 
-build-tagging-ui:
+build:
 	./node_modules/.bin/webpack --config ./webpack/prod.js
 
-dev-tagging-ui:
+dev:
 	NODE_ENV="development" ./node_modules/.bin/webpack-dev-server --config ./webpack/dev.js
 
 build-vendor:

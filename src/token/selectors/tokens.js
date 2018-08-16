@@ -4,6 +4,7 @@ import { get, sortBy } from 'lodash';
 import { getCategoryTitle, rankCategory } from '../util';
 
 export const getConnectSearch = (state) => state.connectSearch || {};
+export const getSelectedToken = (state) => state.selectedToken;
 export const getConnectSearchQuery = (state) =>
   getConnectSearch(state).query || '';
 export const getConnectSearchLoading = (state) =>

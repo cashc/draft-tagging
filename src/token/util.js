@@ -55,3 +55,17 @@ export const queryHasToken = (query = '', tokens = []) =>
     const tokenRangeFromQuery = query.substr(token.start, tokenWord.length);
     return tokenRangeFromQuery === tokenWord;
   }, false);
+
+export const isSameToken = (tOne, tTwo) =>
+  tOne.start === tTwo.start &&
+  tOne.end === tTwo.end &&
+  tOne.token === tTwo.token &&
+  tOne.category === tTwo.category;
+
+export const filterSupportedTokens = (tokens) =>
+  tokens.filter(isTokenSupported);
+
+function isTokenSupported(token) {
+  const { category } = token;
+  return isCategorySupported(category);
+}
