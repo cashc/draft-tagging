@@ -41,7 +41,7 @@ module.exports = {
     ],
   },
   output: {
-    path: path.join(ROOT_PATH, 'app/public/dist'),
+    path: path.join(ROOT_PATH, 'public/dist'),
     publicPath: 'dist/',
     filename: '[name].js',
   },
@@ -67,7 +67,6 @@ module.exports = {
       /* eslint-disable import/no-unresolved */
       manifest: path.join(
         ROOT_PATH,
-        'app',
         'public',
         'dist',
         'vendor-manifest.json',

@@ -9,7 +9,7 @@ module.exports = merge(webBaseConfig, {
   mode: 'development',
   devServer: {
     port: process.env.PORT || 8080,
-    contentBase: path.join(ROOT_PATH, 'app', 'public'),
+    contentBase: path.join(ROOT_PATH, 'public'),
     publicPath: '/dist/',
   },
   watch: true,

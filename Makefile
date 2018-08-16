@@ -15,8 +15,8 @@ build-vendor-prod:
 	NODE_ENV="production" ./node_modules/.bin/webpack --config ./webpack/vendor.js
 
 svg:
-	./node_modules/.bin/trove-svgo -f ./app/public/svg/original -o ./app/public/svg/optimized --config=.svgo.yml --quiet
+	./node_modules/.bin/trove-svgo -f ./public/svg/original -o ./public/svg/optimized --config=.svgo.yml --quiet
 
 clean:
-	rm -rf ./app/public/dist
-	rm -rf ./app/public/svg/optimized/*
+	rm -rf ./public/dist
+	rm -rf ./public/svg/optimized/*
