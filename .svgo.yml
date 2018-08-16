@@ -1,0 +1,11 @@
+full: true
+plugins:
+    - convertIdsToClasses: true
+    - removeComments: true
+    - removeTitle: true
+    - removeDesc: true
+    - removeUselessDefs: true
+    - removeAttrs:
+        attrs:
+          - 'svg:xmlns.*'
+          - 'svg:xml.*'

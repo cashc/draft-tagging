@@ -1,0 +1,22 @@
+{
+  "env": {
+    "scripts": {
+      "presets": [
+        ["env", { "targets": { "node": "8.7" } }],
+        "stage-0"
+      ]
+    },
+    "test": {
+      "plugins": [
+        ["transform-runtime", { "polyfill": false }],
+        "syntax-dynamic-import",
+        "babel-plugin-styled-components"
+      ],
+      "presets": [
+        ["env", { "targets": { "browsers": "last 2 versions" } }],
+        "stage-0",
+        "react"
+      ]
+    }
+  }
+}

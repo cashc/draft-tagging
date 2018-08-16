@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default SearchBar render should match snapshot 1`] = `
+<HighlightedSearchTokens
+  disableTyping={false}
+  handleSearch={[Function]}
+  query=""
+  tokens={Array []}
+  updateToken={[Function]}
+/>
+`;
+
+exports[`when disableTyping is \`true\` should match snapshot 1`] = `
+<HighlightedSearchTokens
+  disableTyping={true}
+  handleSearch={[Function]}
+  query=""
+  tokens={Array []}
+  updateToken={[Function]}
+/>
+`;

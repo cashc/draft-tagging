@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchToken should render 1`] = `
+<search-token__SearchBarToken
+  onClick={[Function]}
+>
+  <InjectSVG
+    containerClassName="handlebar left"
+    path="text-handle-start.svg"
+    svgFolder="svg/optimized"
+  />
+  <search-token__DraggableHandleBase
+    onMouseDown={[Function]}
+  />
+  <InjectSVG
+    containerClassName="handlebar right"
+    path="text-handle-end.svg"
+    svgFolder="svg/optimized"
+  />
+  <search-token__DraggableHandleBase
+    onMouseDown={[Function]}
+  />
+</search-token__SearchBarToken>
+`;
+
+exports[`SearchToken when token category is company orange highlight is rendered with contextMenu only 1`] = `
+<search-token__SearchBarToken
+  onClick={[Function]}
+>
+  <InjectSVG
+    containerClassName="handlebar left"
+    path="text-handle-start.svg"
+    svgFolder="svg/optimized"
+  />
+  <search-token__DraggableHandleBase
+    onMouseDown={[Function]}
+  />
+  <InjectSVG
+    containerClassName="handlebar right"
+    path="text-handle-end.svg"
+    svgFolder="svg/optimized"
+  />
+  <search-token__DraggableHandleBase
+    onMouseDown={[Function]}
+  />
+</search-token__SearchBarToken>
+`;
+
+exports[`SearchToken when token category is new token clickable highlight is rendered without a background-color 1`] = `
+<search-token__SearchBarToken
+  onClick={[Function]}
+/>
+`;

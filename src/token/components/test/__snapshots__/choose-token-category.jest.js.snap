@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChooseTokenCategory when rendering should render the menu 1`] = `
+<div>
+  <ContextMenu
+    actions={
+      Array [
+        Object {
+          "label": "Name",
+          "name": "user_name",
+          "onClick": [Function],
+          "type": "item",
+        },
+        Object {
+          "label": "Job Title",
+          "name": "job_title",
+          "onClick": [Function],
+          "type": "item",
+        },
+        Object {
+          "label": "Company Name",
+          "name": "company",
+          "onClick": [Function],
+          "type": "item",
+        },
+        Object {
+          "label": "City",
+          "name": "city",
+          "onClick": [Function],
+          "type": "item",
+        },
+        Object {
+          "label": "State / Province",
+          "name": "state",
+          "onClick": [Function],
+          "type": "item",
+        },
+        Object {
+          "label": "Domain",
+          "name": "domain",
+          "onClick": [Function],
+          "type": "item",
+        },
+        Object {
+          "type": "divider",
+        },
+        Object {
+          "label": "Remove",
+          "name": "delete_token",
+          "onClick": [Function],
+          "type": "item",
+        },
+      ]
+    }
+    animate={false}
+    clickPosition={Object {}}
+    handleClose={[Function]}
+    open={true}
+  />
+</div>
+`;
