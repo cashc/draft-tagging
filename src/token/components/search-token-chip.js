@@ -69,14 +69,6 @@ const DropdownTriangle = styled.div`
   border-top: 4px solid ${(props) => props.theme.foregroundLink};
 `;
 
-export const QueryHitsDiv = styled.div`
-  font-size: 13px;
-  letter-spacing: 0.1px;
-  text-align: left;
-  color: ${(props) => props.theme.foregroundSecondary};
-  margin-top: 5px;
-`;
-
 export const SearchTokenChip = ({
   tokensForWords = [],
   chooseTokenCategory = () => {},

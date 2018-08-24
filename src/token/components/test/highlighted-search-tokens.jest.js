@@ -1,5 +1,4 @@
-import toJson from 'enzyme-to-json';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import { h } from 'react-hyperscript-helpers';
 import {
   EditorState,
@@ -7,7 +6,7 @@ import {
   convertToRaw,
   SelectionState,
 } from 'draft-js';
-import { createStoreOptions } from '@trove/test-util';
+import { createStoreOptions } from '../../../util';
 
 import {
   HighlightedSearchTokens,
@@ -26,8 +25,8 @@ jest.mock('draft-js/lib/generateRandomKey', () => () => '123');
 jest.useFakeTimers();
 
 describe('HighlightedSearchTokens', () => {
-  context('default state', () => {
-    const wrapper = shallow(h(HighlightedSearchTokens), createStoreOptions({}));
+  describe('default state', () => {
+    const wrapper = shallow(h(HighlightedSearchTokens), createStoreOptions());
 
     it('should have empty editor', () => {
       expect(
@@ -105,9 +104,9 @@ describe('HighlightedSearchTokens', () => {
     });
   });
 
-  context('when editor is changed', () => {
+  describe('when editor is changed', () => {
     const handleSearch = jest.fn();
-    const wrapper = mount(
+    const wrapper = shallow(
       h(HighlightedSearchTokens, {
         handleSearch,
       }),
@@ -135,7 +134,7 @@ describe('HighlightedSearchTokens', () => {
     });
   });
 
-  context('when given query to render', () => {
+  describe('when given query to render', () => {
     const handleSearch = jest.fn();
     const query = 'gimme people';
     const wrapper = shallow(
@@ -162,42 +161,12 @@ describe('HighlightedSearchTokens', () => {
       ).toEqual(query);
     });
 
-    it('renders correct query', () => {
-      expect(toJson(wrapper)).toMatchSnapshot();
-    });
-
     it('doesnt call handleSearch because query is same as new editor text', () => {
       expect(handleSearch).not.toHaveBeenCalled();
     });
   });
 
-  context('when searchLoading is true', () => {
-    it('renders a loading state', () => {
-      const query = 'gimme people';
-      const wrapper = shallow(
-        h(HighlightedSearchTokens, {
-          query,
-          searchLoading: true,
-        }),
-      );
-      expect(toJson(wrapper)).toMatchSnapshot();
-    });
-  });
-
-  context('when there is no query', () => {
-    it('renders a search icon button', () => {
-      const query = '';
-      const wrapper = shallow(
-        h(HighlightedSearchTokens, {
-          query,
-          searchLoading: false,
-        }),
-      );
-      expect(toJson(wrapper)).toMatchSnapshot();
-    });
-  });
-
-  context('when resetting search bar', () => {
+  describe('when resetting search bar', () => {
     const handleSearch = jest.fn();
     const query = 'gimme people';
     const wrapper = shallow(
@@ -227,7 +196,7 @@ describe('HighlightedSearchTokens', () => {
     });
   });
 
-  context('when given tokens to render', () => {
+  describe('when given tokens to render', () => {
     const tokens = [
       { start: 0, end: 10, token: 'connectors', category: 'internal_tag' },
       { start: 13, end: 18, token: 'Trove', category: 'company' },
@@ -248,12 +217,12 @@ describe('HighlightedSearchTokens', () => {
     editor.props().onChange(nextEditorState);
 
     it('applies entites to tokens', () => {
-      wrapper.instance().highlightTokens(true);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const editorState = wrapper.instance().highlightTokens(true);
+      expect(wrapper.state().editorState).toBe(editorState);
     });
   });
 
-  context('when modifying query with tokens', () => {
+  describe('when modifying query with tokens', () => {
     const tokens = [
       { start: 0, end: 10, token: 'connectors', category: 'internal_tag' },
       { start: 13, end: 18, token: 'Trove', category: 'company' },
@@ -323,18 +292,17 @@ describe('HighlightedSearchTokens', () => {
     });
   });
 
-  describe('when passing query as a prop on mount', () => {
+  describe('when passing query as a prop', () => {
     const tokens = [
       { start: 0, end: 10, token: 'connectors', category: 'internal_tag' },
       { start: 13, end: 18, token: 'Trove', category: 'company' },
     ];
     const query = 'connectors a Trove';
-    const wrapper = mount(
+    const wrapper = shallow(
       h(HighlightedSearchTokens, {
         tokens,
         query,
       }),
-      createStoreOptions({}),
     );
 
     it('should set editorState text to the query', () => {
@@ -377,7 +345,7 @@ describe('HighlightedSearchTokens', () => {
     });
   });
 
-  context('when highlighting', () => {
+  describe('when highlighting', () => {
     const query = 'connectors a Trove';
     const wrapper = shallow(
       h(HighlightedSearchTokens, {

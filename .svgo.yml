@@ -1,6 +1,4 @@
-full: true
 plugins:
-    - convertIdsToClasses: true
     - removeComments: true
     - removeTitle: true
     - removeDesc: true

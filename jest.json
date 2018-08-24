@@ -1,9 +1,7 @@
 {
   "testRegex": "(\\.test|\\.jest)\\.js$",
-  "transformIgnorePatterns": [
-    "<rootDir>/node_modules/(?!@trove)"
-  ],
-  "setupTestFrameworkScriptFile": "./src/packages/test-util/jest.js",
+  "transformIgnorePatterns": ["<rootDir>/node_modules/(?!@trove)"],
+  "setupTestFrameworkScriptFile": "./src/util/jest.js",
   "coverageReporters": ["text-summary"],
   "moduleNameMapper": {
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"

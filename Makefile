@@ -1,22 +1,35 @@
+BIN=./node_modules/.bin
+
 install: clean svg
 	NODE_ENV="development" yarn --ignore-engines
 	make build-vendor NODE_ENV=development
 
 build:
-	./node_modules/.bin/webpack --config ./webpack/prod.js
+	${BIN}/webpack --config ./webpack/prod.js
 
 dev:
-	NODE_ENV="development" ./node_modules/.bin/webpack-dev-server --config ./webpack/dev.js
+	NODE_ENV="development" ${BIN}/webpack-dev-server --config ./webpack/dev.js
 
 build-vendor:
-	NODE_ENV="development" ./node_modules/.bin/webpack --config ./webpack/vendor.js
+	NODE_ENV="development" ${BIN}/webpack --config ./webpack/vendor.js
 
 build-vendor-prod:
-	NODE_ENV="production" ./node_modules/.bin/webpack --config ./webpack/vendor.js
+	NODE_ENV="production" ${BIN}/webpack --config ./webpack/vendor.js
 
 svg:
-	./node_modules/.bin/trove-svgo -f ./public/svg/original -o ./public/svg/optimized --config=.svgo.yml --quiet
+	${BIN}/svgo -f ./public/svg/original -o ./public/svg/optimized --config=.svgo.yml --quiet
 
 clean:
 	rm -rf ./public/dist
 	rm -rf ./public/svg/optimized/*
+
+test: lint jest
+
+lint:
+	${BIN}/eslint src *.js --cache --quiet
+
+jest:
+	BABEL_ENV=test ${BIN}/jest --config jest.json
+
+jest-watch:
+	BABEL_ENV=test ${BIN}/jest --config jest.json --watch --verbose

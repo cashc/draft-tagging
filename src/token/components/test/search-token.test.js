@@ -10,7 +10,7 @@ describe('SearchToken', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  context('when token category is company', () => {
+  describe('when token category is company', () => {
     it('orange highlight is rendered with contextMenu only', () => {
       const token = { token: 'Trove', category: 'company' };
 
@@ -19,7 +19,7 @@ describe('SearchToken', () => {
     });
   });
 
-  context('when token category is new token', () => {
+  describe('when token category is new token', () => {
     it('clickable highlight is rendered without a background-color', () => {
       const token = { token: 'Trove', category: NEW_TOKEN_CATEGORY };
 

@@ -53,7 +53,7 @@ const Category = styled.div`
 
 export function ChooseTokenCategory({
   selectedToken = false,
-  handleChooseTokenCategory,
+  handleChooseTokenCategory = () => {},
 }) {
   if (!selectedToken) return null;
 
